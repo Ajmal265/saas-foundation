@@ -1,0 +1,10 @@
+{
+    "name": "my-django-project",
+    "docker": {
+      "build": {
+        "context": ".",
+        "dockerfile": "Dockerfile"
+      }
+    }
+  }
+  
