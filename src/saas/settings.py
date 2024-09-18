@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+from decouple import config
 
 from pathlib import Path
 
@@ -20,10 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*7+fs9fj*hr6*k3x%_oj9o@w*&%fr4+9kko=((4#v2cj&m1ivn'
+SECRET_KEY = config('SECRET_KEY')
+
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = [".railway.app"]
 
@@ -88,6 +91,21 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': config('PGDATABASE'),
+#     'USER': config('PGUSER'),
+#     'PASSWORD': config('PGPASSWORD'),
+#     'HOST': config('PGHOST'),
+#     'PORT': config('PGPORT', 5432),
+#     'OPTIONS': {
+#       'sslmode': 'require',
+#     },
+#   }
+# }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -124,6 +142,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_BASE_DIR = BASE_DIR /'sataticfiles'
+STATICFILES_VENTOR_DIR = STATICFILES_BASE_DIR/'VENTORS'
+
+# source(s) for the py manage.py collectstatic
+STATICFILES_FILE_DIR = [
+    STATICFILES_BASE_DIR
+]
+
+# output for py manage.py coolectstatic
+STATIC_ROOT = BASE_DIR/'local-cdn'  
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
