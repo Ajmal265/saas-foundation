@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'visits',
+    'commants',
 ]
 
 MIDDLEWARE = [
@@ -144,7 +145,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_BASE_DIR = BASE_DIR /'sataticfiles'
-STATICFILES_VENTOR_DIR = STATICFILES_BASE_DIR/'VENTORS'
+STATICFILES_BASE_DIR.mkdir(exist_ok=True, parents=True)
+STATICFILES_VENTOR_DIR = STATICFILES_BASE_DIR/'ventors'
 
 # source(s) for the py manage.py collectstatic
 STATICFILES_FILE_DIR = [
