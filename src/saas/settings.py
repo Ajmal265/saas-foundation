@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = [".railway.app"]
+ALLOWED_HOSTS = [".saas-foundation.railway.internal"]
 
 if DEBUG:
     ALLOWED_HOSTS += [
